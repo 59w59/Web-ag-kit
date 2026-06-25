@@ -28,21 +28,26 @@ This kit is built to solve common pitfalls in AI-generated web development (like
 
 ---
 
-## 🚀 How to Use It (Step-by-Step)
+## 🚀 Quick Start
 
-### 1. Initialize the Workspace
-In your terminal, navigate to the root directory of your web project and run:
+You can initialize the `.agents/` workspace in your project using either **NPX** or by installing it **globally**.
 
+#### Option A: Run via NPX (No installation required)
+In your terminal, navigate to your project directory and run:
 ```bash
 npx @59w59/web-ag-kit
 ```
-This downloads and creates a `.agents/` folder in your project.
 
-### 2. Open Your Project
-Open the project in VS Code, Cursor, or your preferred IDE. Make sure your agentic assistant (e.g. Antigravity) is active.
-
-### 3. Let the Agents Take Over
-The workspace is loaded with specialized agent personas in `.agents/agents/`. When you prompt your AI, you can direct it to apply these specialized behaviors.
+#### Option B: Install globally and initialize
+Install the package globally:
+```bash
+npm install -g @59w59/web-ag-kit
+```
+Now you can initialize it in any project folder by running:
+```bash
+web-ag-kit
+```
+*(Or specify a folder: `web-ag-kit ./my-new-project`)*
 
 ---
 
@@ -80,6 +85,19 @@ The workspace comes with a template config at `.agents/mcp/mcp_config.json` defi
 * **puppeteer-browser**: Renders and inspects UI layouts.
 
 To enable them, copy the configuration block and paste it into your local global configuration (`~/.gemini/config/mcp_config.json` or `%USERPROFILE%\.gemini\config\mcp_config.json` on Windows).
+
+---
+
+## 🙈 Git Configuration (.gitignore)
+
+The `.agents/` folder contains your team's custom prompts, rules, and workflows. You **should commit** the `.agents/` folder to Git so that everyone working on the project shares the same AI agent workspace guidelines.
+
+However, you should **ignore local agent run logs** to keep your git commits clean. Add the following to your project's `.gitignore` file:
+
+```text
+# Ignore local agent execution logs
+.agents/preview.log
+```
 
 ---
 
