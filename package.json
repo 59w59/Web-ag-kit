@@ -1,0 +1,23 @@
+{
+  "name": "@59w59/web-ag-kit",
+  "version": "1.0.0",
+  "description": "Scaffold a full-stack AI agent workspace (frontend & backend) in seconds.",
+  "main": "bin/index.js",
+  "bin": {
+    "web-ag-kit": "bin/index.js"
+  },
+  "files": [
+    "bin",
+    ".agents"
+  ],
+  "keywords": [
+    "antigravity",
+    "ai-agents",
+    "scaffold",
+    "workspace",
+    "web-development",
+    "cli"
+  ],
+  "author": "59w59",
+  "license": "MIT"
+}
