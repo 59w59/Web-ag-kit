@@ -10,105 +10,76 @@
   <a href="https://github.com/59w59/web-ag-kit/blob/main/LICENSE">
     <img src="https://img.shields.io/npm/l/@59w59/web-ag-kit.svg?color=blue" alt="license">
   </a>
-  <a href="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs Welcome">
-  </a>
 </p>
 
-Scaffold a high-performance **AI Agent Workspace** tailored specifically for frontend and backend web development. Bring specialized agents, custom coding workflows, pre-deployment checklists, and automated testing suites to any project repository in seconds.
+**Web-ag-kit** is a ready-to-use **AI Agent Workspace** designed specifically for full-stack web development (frontend & backend). It instantly equips your local coding agents (like Antigravity, Gemini, or Claude) with specialized roles, reusable software engineering skills, custom workflows, and automated quality checks.
+
+Stop teaching your AI how you want to build websites in every session. Scaffold a structured workspace in one command and let your agents code with senior-level guidelines.
 
 ---
 
-## ✨ Features
+## 🎯 What it Focuses On
 
-- 🤖 **20+ Specialized Agent Personas**: Personas for Frontend UI/UX, Backend APIs, QA testing, DevOps, Security Auditing, and Code Archeology.
-- 📦 **12 Developer Skills**: Built-in instructions covering Tailwind/CSS layout systems, Next.js optimization, REST/GraphQL design, and vulnerability scanners.
-- ⚙️ **Custom Workflows**: Interactive procedures for Socratic brainstorming, advanced UI coding, debugging sessions, and deployments.
-- 🛠️ **Automated Scripts**: Local Python/Node scripts that run linter checks, test cases, and accessibility/SEO audits.
-- 🔌 **MCP configuration template**: Set up and manage Model Context Protocol servers like 21st.dev, postgres-inspector, and puppeteer.
+This kit is built to solve common pitfalls in AI-generated web development (like generic color schemes, unoptimized queries, missing test suites, or lack of accessibility compliance):
+
+- 💻 **Frontend Engineering**: Configured for React, Next.js, and standard CSS/Tailwind. Bundles full design guidelines, UX principles, typography combinations, and Framer Motion animation instructions.
+- ⚙️ **Backend Architectures**: Establishes strict rules for database migrations, relational schema indexing, REST/GraphQL design, token security (JWT/OAuth), and rate-limiting.
+- 🛡️ **Code Quality & Audits**: Contains built-in scripts to test accessibility (a11y), check SEO, run security vulnerability scans (OWASP compliance), and check Next.js bundle sizes before shipping.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 How to Use It (Step-by-Step)
 
-Initialize the `.agents/` workspace directory in your current project folder:
+### 1. Initialize the Workspace
+In your terminal, navigate to the root directory of your web project and run:
 
 ```bash
 npx @59w59/web-ag-kit
 ```
+This downloads and creates a `.agents/` folder in your project.
+
+### 2. Open Your Project
+Open the project in VS Code, Cursor, or your preferred IDE. Make sure your agentic assistant (e.g. Antigravity) is active.
+
+### 3. Let the Agents Take Over
+The workspace is loaded with specialized agent personas in `.agents/agents/`. When you prompt your AI, you can direct it to apply these specialized behaviors.
 
 ---
 
-## 📂 What Gets Created
+## 🤖 Meet the Specialist Agents
 
-Running the bootstrapper installs the following structure inside your repository:
+Here are some of the specialized roles ready to work on your codebase:
 
-```text
-.agents/
-├── .shared/                   # Central design system data, component templates, and assets
-│   └── ui-ux-pro-max/         # CSV style sheets, animations, and design python helpers
-├── agents/                    # Special system prompts defining agent capabilities
-│   ├── frontend-specialist.md # Master of UI/UX, responsive design, and animations
-│   ├── backend-specialist.md  # Schema modeling, APIs, caching, and server security
-│   ├── qa-specialist.md       # Unit/E2E test suite writer (AAA patterns)
-│   └── ... (17 more specialized personas)
-├── mcp/                       # MCP Server integration configurations
-│   └── mcp_config.json        # Template config for postgres, sqlite, and puppeteer servers
-├── rules/                     # Styling guidelines, syntax rules, and Gemini behaviors
-│   └── GEMINI.md              # Override instructions and command triggers
-├── scripts/                   # Local verification utilities
-│   ├── verify_all.py          # Syntax and structure verification
-│   └── checklist.py           # Pre-deployment pipeline gate
-├── skills/                    # Modular developer instructions (loaded dynamically)
-│   ├── clean-code/
-│   ├── database-design/
-│   └── ... (10 more skills)
-└── workflows/                 # Interactive workflows for planning and debugging
-    ├── plan.md
-    └── ui-ux-pro-max.md
-```
-
-For a detailed breakdown of directories and how the agents interact, read [ARCHITECTURE.md](file:///.agents/ARCHITECTURE.md).
+- **Frontend Specialist** (`frontend-specialist.md`): Focuses on generating beautiful, accessible, and responsive UI components with clean Tailwind classes and fluid animations.
+- **Backend Specialist** (`backend-specialist.md`): Focuses on secure, robust RESTful APIs, database optimizations, queries, and server-side middleware.
+- **QA & Test Engineer** (`qa-automation-engineer.md`): Focuses on writing unit, integration, and E2E tests (using Playwright or Jest) following strict AAA testing patterns.
+- **Penetration Tester / Security Auditor**: Scans code for dependency vulnerabilities, OWASP threats, and SQL injection flaws.
 
 ---
 
-## 🔧 MCP Configuration Setup
+## 💡 Example Prompts to Try
 
-The template configuration at `.agents/mcp/mcp_config.json` is ready to be configured. To apply it to your agent:
+Once initialized, try prompts like:
 
-1. Copy the servers block from `.agents/mcp/mcp_config.json`.
-2. Paste them into your global MCP configuration:
-   - **Windows**: `%USERPROFILE%\.gemini\config\mcp_config.json`
-   - **macOS/Linux**: `~/.gemini/config/mcp_config.json`
-3. Reload your editor/terminal window to load the new servers.
+* **For UI design**:
+  > *"Use the @frontend-specialist persona to build a responsive, dashboard navbar. Rely on our Tailwind design guidelines, avoid generic templates, and use subtle Framer Motion hover animations."*
+  
+* **For Database & API**:
+  > *"Use the @backend-specialist to design a PostgreSQL migration schema and REST API endpoints for user authentication. Ensure proper indexing for frequently queried fields."*
+
+* **For Pre-deployment Verification**:
+  > *"Run the local checklist verification script to verify that my changes pass security linting, test cases, and SEO best practices."*
 
 ---
 
-## 🛠️ How to Publish Updates (For Maintainers)
+## 🔌 Connecting Local MCP Servers
 
-If you are the developer of this kit, here is how you can publish updates to the npm registry:
+The workspace comes with a template config at `.agents/mcp/mcp_config.json` defining helpful tools:
+* **21st-dev-magic**: Quick UI component insertion.
+* **postgres-inspector**: Query your database directly inside the agent chat.
+* **puppeteer-browser**: Renders and inspects UI layouts.
 
-### 1. Log in to npm
-Make sure you are logged in to your npm account from the command line. If you don't have an account, sign up at [npmjs.com](https://www.npmjs.com/).
-
-```bash
-npm login
-```
-
-### 2. Configure Scoped Package Publishing
-Since this package is scoped (`@59w59`), npm publishes it as a **private** package by default. If you want this to be **publicly accessible** so anyone can use it via `npx`, publish it with the `--access public` flag:
-
-```bash
-npm publish --access public
-```
-
-### 3. Publishing Updates
-Whenever you change the `.agents` workspace configurations or the CLI script:
-1. Increment the version in `package.json` (e.g. from `1.0.0` to `1.0.1` or use `npm version patch`).
-2. Run the publish command again:
-```bash
-npm publish --access public
-```
+To enable them, copy the configuration block and paste it into your local global configuration (`~/.gemini/config/mcp_config.json` or `%USERPROFILE%\.gemini\config\mcp_config.json` on Windows).
 
 ---
 
