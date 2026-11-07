@@ -1,7 +1,7 @@
 {
   "name": "@59w59/web-ag-kit",
-  "version": "1.5.0",
-  "description": "Scaffold a full-stack AI agent workspace with Cloudflare defense, OWASP API, STRIDE, Scrapling stealth crawler, Zero-Downtime DB, Self-healing QA & ECC Design/Performance optimization.",
+  "version": "1.6.0",
+  "description": "Scaffold a full-stack AI agent workspace with Full-Agent Thought Chain Pipeline, Continuous Learning Living Memory, Cloudflare Defense, Scrapling crawler, and Vercel React Performance.",
   "main": "bin/index.js",
   "bin": {
     "web-ag-kit": "bin/index.js",
@@ -9,7 +9,8 @@
   },
   "files": [
     "bin",
-    ".agents"
+    ".agents",
+    "docs"
   ],
   "keywords": [
     "antigravity",
@@ -18,6 +19,10 @@
     "workspace",
     "web-development",
     "cli",
+    "full-agent",
+    "orchestration",
+    "continuous-learning",
+    "living-memory",
     "cloudflare",
     "scrapling",
     "web-scraping",

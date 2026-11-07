@@ -229,12 +229,20 @@ async function runWizard() {
       // Full copy
       fs.cpSync(sourceAgents, targetAgents, { recursive: true });
 
+      // Seed docs/memory and docs/adr if not existing in target
+      const sourceDocs = path.join(__dirname, '../docs');
+      const targetDocs = path.join(targetPath, 'docs');
+      if (fs.existsSync(sourceDocs) && !fs.existsSync(targetDocs)) {
+        fs.cpSync(sourceDocs, targetDocs, { recursive: true });
+      }
+
       console.log('\n\x1b[32m%s\x1b[0m', '✅ Web-ag-kit initialized successfully!');
       console.log(`\n  📂 Target: \x1b[34m${targetAgents}\x1b[0m`);
       console.log(`  💻 Stack Profile: \x1b[35m${stack}\x1b[0m`);
-      console.log(`  🤖 Agents Installed: \x1b[36m18 Specialist Personas\x1b[0m`);
-      console.log(`  ⚡ Skills Included: \x1b[36m23 Hardened Skills (Fullstack + Security + CWV + Scrapling)\x1b[0m`);
-      console.log(`  🔄 Workflows: \x1b[36morchestrate, security-audit, ui-ux-pro-max, deploy\x1b[0m\n`);
+      console.log(`  🤖 Agents Installed: \x1b[36m20 Specialist Personas\x1b[0m`);
+      console.log(`  ⚡ Skills Included: \x1b[36m31 Hardened Skills (Fullstack + Security + CWV + Scrapling + Continuous Learning)\x1b[0m`);
+      console.log(`  🧠 Living Memory: \x1b[36mdocs/memory/ (Continuous Learning & Success Ledger)\x1b[0m`);
+      console.log(`  🔄 Workflows: \x1b[36m/full-agent, /security-audit, /ui-ux-pro-max, /deploy\x1b[0m\n`);
 
       console.log('\x1b[1mNext steps:\x1b[0m');
       console.log('  1. Open this directory in VS Code / Antigravity / Cursor.');

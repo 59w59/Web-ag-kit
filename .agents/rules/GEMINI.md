@@ -36,9 +36,9 @@ Agent activated → Check frontmatter "skills:" → Read SKILL.md (INDEX) → Re
 | **QUESTION**     | "what is", "how does", "explain"           | TIER 0 only                    | Text Response               |
 | **SURVEY/INTEL** | "analyze", "list files", "overview"        | TIER 0 + Explorer              | Session Intel (No File)     |
 | **SIMPLE CODE**  | "fix", "add", "change" (single file)       | TIER 0 + TIER 1 (lite)         | Inline Edit                 |
-| **COMPLEX CODE** | "build", "create", "implement", "refactor" | TIER 0 + TIER 1 (full) + Agent | **{task-slug}.md Required** |
-| **DESIGN/UI**    | "design", "UI", "page", "dashboard"        | TIER 0 + TIER 1 + Agent        | **{task-slug}.md Required** |
-| **SLASH CMD**    | /create, /orchestrate, /debug              | Command-specific flow          | Variable                    |
+| **COMPLEX CODE** | "build", "create", "implement", "refactor" | TIER 0 + TIER 1 + Full-Agent Squad | **Full-Agent Pipeline + {task-slug}.md** |
+| **DESIGN/UI**    | "design", "UI", "page", "dashboard"        | TIER 0 + TIER 1 + Full-Agent Squad | **Full-Agent Pipeline + {task-slug}.md** |
+| **SLASH CMD**    | /full-agent, /create, /orchestrate, /debug | Command-specific flow          | Variable                    |
 
 ---
 
@@ -54,6 +54,19 @@ Agent activated → Check frontmatter "skills:" → Read SKILL.md (INDEX) → Re
 2. **Select Agent(s)**: Choose the most appropriate specialist(s).
 3. **Inform User**: Concisely state which expertise is being applied.
 4. **Apply**: Generate response using the selected agent's persona and rules.
+
+### 🧠 FULL-AGENT THOUGHT CHAIN (MANDATORY FOR COMPLEX TASKS)
+
+When a request is classified as **COMPLEX CODE** or **DESIGN/UI**, execute via the 6-stage thought chain in `.agents/rules/full-agent-pipeline.md`:
+
+1. **[ENTENDER]** 🔍 `@explorer-agent`: Memory-first discovery (reads `docs/memory/INDEX.json` and maps affected code).
+2. **[PLANEJAR]** 📐 `@project-planner`: Architectural decision records in `docs/adr/` and task plan written to disk.
+3. **[EXECUTAR]** 💻 `@frontend-specialist` & `@backend-specialist`: Implements clean code without template slop.
+4. **[REVISAR-SEC]** 🛡️ `@security-auditor`: OWASP API Top 10, Cloudflare WAF and SkillSpector security audit.
+5. **[REVISAR-QA]** ⚡ `@performance-optimizer` & `@qa-automation-engineer`: Core Web Vitals and resilient Playwright tests.
+6. **[APRENDER]** 🧠 `continuous-learning`: Distills novel patterns/victories into `docs/memory/LEARNINGS.md`.
+
+---
 
 ### Response Format (MANDATORY)
 

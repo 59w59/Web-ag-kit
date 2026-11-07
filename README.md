@@ -11,13 +11,14 @@
     <img src="https://img.shields.io/npm/l/@59w59/web-ag-kit.svg?color=blue" alt="license">
   </a>
   <img src="https://img.shields.io/badge/agents-20_specialists-7928CA?logo=robot" alt="agents">
-  <img src="https://img.shields.io/badge/skills-30_hardened_skills-0070F3?logo=codersrank" alt="skills">
+  <img src="https://img.shields.io/badge/skills-31_hardened_skills-0070F3?logo=codersrank" alt="skills">
+  <img src="https://img.shields.io/badge/memory-living_knowledge_ledger-purple?logo=brain" alt="living memory">
   <img src="https://img.shields.io/badge/security-NVIDIA_SkillSpector_Verified-green?logo=nvidia" alt="SkillSpector verified">
 </p>
 
 **Web-ag-kit** is a production-grade **AI Agent Workspace & Engineering Harness** built specifically for full-stack web development. It transforms local coding agents (such as Antigravity, Gemini CLI, Claude Code, Cursor, and Codex) from generic code-completers into a coordinated senior engineering department.
 
-Instead of retraining your AI on every session, scaffold a structured `.agents/` environment in seconds. Your agents will write zero-template-slop UI, prevent network waterfalls, audit zero-downtime database migrations, enforce Cloudflare edge security, bypass bot blockers stealthily, and record architectural decisions automatically.
+Instead of retraining your AI on every session, scaffold a structured `.agents/` environment in seconds. Your agents will write zero-template-slop UI, prevent network waterfalls, audit zero-downtime database migrations, enforce Cloudflare edge security, bypass bot blockers stealthily, record architectural decisions, and **continuously learn from past successes via an on-disk Living Memory Ledger (`docs/memory/`)**.
 
 ---
 
@@ -27,6 +28,7 @@ Instead of retraining your AI on every session, scaffold a structured `.agents/`
 - [📦 Installation & Quick Start](#-installation--quick-start)
 - [🏗️ Workspace Architecture](#️-workspace-architecture)
 - [🌟 Core Capabilities & Pillars](#-core-capabilities--pillars)
+  - [0. 🧠 Full-Agent Thought Chain & Continuous Learning Ledger](#0--full-agent-thought-chain--continuous-learning-ledger)
   - [1. 🎨 Design Engineering & Anti-Template Craftsmanship](#1--design-engineering--anti-template-craftsmanship)
   - [2. 🏛️ Architecture Decision Records (ADRs)](#2-️-architecture-decision-records-adrs)
   - [3. ⚡ React 19 & Next.js 15 Performance Guard](#3--react-19--nextjs-15-performance-guard)
@@ -38,7 +40,7 @@ Instead of retraining your AI on every session, scaffold a structured `.agents/`
   - [9. 🗄️ Zero-Downtime Database Engineering](#9-️-zero-downtime-database-engineering)
   - [10. 🧪 Self-Healing Playwright QA](#10--self-healing-playwright-qa)
 - [🤖 Specialist Agents Catalog (20 Roles)](#-specialist-agents-catalog-20-roles)
-- [🧰 Hardened Skills Catalog (30 Skills)](#-hardened-skills-catalog-30-skills)
+- [🧰 Hardened Skills Catalog (31 Skills)](#-hardened-skills-catalog-31-skills)
 - [⚡ Workflows & Slash Commands](#-workflows--slash-commands)
 - [🔌 MCP Servers Configuration](#-mcp-servers-configuration)
 - [💡 Example Prompts](#-example-prompts)
@@ -52,6 +54,7 @@ Instead of retraining your AI on every session, scaffold a structured `.agents/`
 |---------------------------------|-----------------|
 | Monotonous AI templates (centered hero, purple gradient blobs, cards inside cards). | **Anti-Template Policy**: Concentric radii, optical alignment, tactile states, and bespoke product identity. |
 | Sequential `await` statements creating 3-5s network waterfalls in Server Components. | **React Performance Guard**: Parallel RSC composition via `<Suspense>`, no barrel imports, zero-flicker hydration. |
+| Session amnesia: solving a hard bug on Monday and forgetting the fix on Tuesday. | **Living Memory Ledger (`docs/memory/`)**: Automatically records winning solutions and retrieves them in future tasks. |
 | Accidental destructive DB locks (`ALTER TABLE DROP COLUMN`) during migrations. | **Zero-Downtime DB Guard**: Expand/Contract patterns, safe index creation (`CONCURRENTLY`), RLS enforcement. |
 | Fragile E2E tests breaking every time CSS classes or DOM nesting changes. | **Self-Healing QA**: Playwright semantic locators (`getByRole`, `getByLabel`) resilient to visual refactors. |
 | Context amnesia and lost plans when session context limits are reached. | **Context Budgeting**: Disk-first persistence, trigger-table lazy loading, and strategic milestone compaction. |
@@ -68,7 +71,7 @@ Scaffold the workspace directly with `npx` or install globally:
 ```bash
 npx @59w59/web-ag-kit
 ```
-*The wizard lets you choose your target folder and pick between the full suite (18+ agents & 30 skills) or the standalone security edition.*
+*The wizard lets you choose your target folder and pick between the full suite (20 agents & 31 skills) or the standalone security edition.*
 
 ### Option B: Global CLI Installation
 ```bash
@@ -106,7 +109,7 @@ npx @59w59/web-ag-kit install-scrapling
 
 ## 🏗️ Workspace Architecture
 
-When initialized, Web-ag-kit creates a clean, self-contained `.agents/` folder:
+When initialized, Web-ag-kit creates a clean, self-contained `.agents/` and `docs/` workspace:
 
 ```text
 my-project/
@@ -117,26 +120,32 @@ my-project/
 │   │   ├── project-planner.md
 │   │   ├── security-auditor.md
 │   │   └── ...
-│   ├── skills/                   # 30 Modular, Injection-Hardened Skills
+│   ├── skills/                   # 31 Modular, Injection-Hardened Skills
+│   │   ├── continuous-learning/  # Post-task extraction & pre-task memory query
 │   │   ├── make-interfaces-feel-better/
 │   │   ├── architecture-decision-records/
 │   │   ├── react-performance/
 │   │   ├── context-budget/
 │   │   ├── scrapling/
 │   │   ├── cloudflare-waf/
-│   │   ├── skill-inspector/
 │   │   └── ...
 │   ├── rules/                    # Global Governance & Quality Standards
 │   │   ├── GEMINI.md             # Antigravity & Agent protocol
+│   │   ├── full-agent-pipeline.md# 5-Stage Thought Chain specification
 │   │   └── anti-template-design.md
 │   ├── workflows/                # Slash Commands & Multi-Agent Workflows
+│   │   ├── full-agent.md         # /full-agent
 │   │   ├── security-audit.md     # /security-audit
 │   │   ├── ui-ux-pro-max.md      # /ui-ux-pro-max
 │   │   └── ...
 │   └── mcp/                      # Model Context Protocol Configurations
 │       └── mcp_config.json
-└── docs/                         # (Auto-scaffolded for project decisions)
-    └── adr/                      # Architecture Decision Records
+└── docs/
+    ├── memory/                   # Living Knowledge Ledger & Self-Improvement
+    │   ├── LEARNINGS.md          # Master catalog of project victories
+    │   ├── INDEX.json            # Machine-readable tags for pre-task querying
+    │   └── solutions/            # Detailed solution blueprints (SLN-*.md)
+    └── adr/                      # Architecture Decision Records (Michael Nygard Standard)
         ├── README.md
         └── template.md
 ```
@@ -144,6 +153,17 @@ my-project/
 ---
 
 ## 🌟 Core Capabilities & Pillars
+
+### 0. 🧠 Full-Agent Thought Chain & Continuous Learning Ledger
+* **Cooperative Thought Chain**: Complex tasks flow sequentially through 5 specialized stages:
+  1. `[ENTENDER]`: `@explorer-agent` queries `docs/memory/INDEX.json` and maps affected codebase.
+  2. `[PLANEJAR]`: `@project-planner` records ADRs in `docs/adr/` and writes disk-first execution plan.
+  3. `[EXECUTAR]`: `@frontend-specialist` & `@backend-specialist` craft clean code without generic template slop.
+  4. `[REVISAR-SEC]`: `@security-auditor` validates OWASP API Top 10, Cloudflare WAF, and SkillSpector.
+  5. `[REVISAR-QA]`: `@performance-optimizer` & `@qa-automation-engineer` check Core Web Vitals and Playwright tests.
+* **Auto-Aprimoramento Contínuo (Continuous Learning)**:
+  * When a task succeeds, `@orchestrator` activates `continuous-learning` to distill the winning pattern into `docs/memory/solutions/SLN-*.md` and updates `LEARNINGS.md`.
+  * Future tasks immediately retrieve this proven solution, preventing repetitive mistakes and accelerating development.
 
 ### 1. 🎨 Design Engineering & Anti-Template Craftsmanship
 *Derived from the design-engineering corpus of `affaan-m/ECC` and refined for modern web applications.*
@@ -214,14 +234,14 @@ All agents are configured in `.agents/agents/` with precise system prompts, tool
 | **`frontend-specialist`** | Crafts accessible, high-polish UI components with concentric radii, optical alignment, and zero template slop. | `make-interfaces-feel-better`, `react-performance`, `core-web-vitals-guard`, `clean-code` |
 | **`project-planner`** | Formulates 4-phase implementation plans, records ADRs, and manages token context budgets. | `architecture-decision-records`, `context-budget`, `plan-writing`, `brainstorming` |
 | **`backend-specialist`** | RESTful APIs, zero-downtime DB migrations, mass-assignment defense, and serverless edge logic. | `api-patterns`, `api-security`, `db-migration-guard`, `scrapling`, `clean-code` |
-| **`explorer-agent`** | Deep codebase discovery, architectural surveying, and live web research with Scrapling. | `scrapling`, `context-budget`, `documentation-templates` |
+| **`explorer-agent`** | Deep codebase discovery, memory-first learning lookups, and live web research with Scrapling. | `scrapling`, `continuous-learning`, `context-budget`, `documentation-templates` |
 | **`performance-optimizer`** | Eliminates React waterfalls, enforces bundle tree-shaking, and preserves 95+ Core Web Vitals. | `react-performance`, `core-web-vitals-guard`, `performance-profiling` |
 | **`security-auditor`** | Audits code against OWASP Web & API Top 10, validates edge defenses, and reviews secret hygiene. | `api-security`, `web-threat-modeling`, `cloudflare-waf`, `skill-inspector` |
 | **`penetration-tester`** | Non-destructive offensive probing, CORS origin testing, and anti-bot resilience testing. | `red-team-tactics`, `web-defense-simulator`, `scrapling`, `turnstile-spin` |
 | **`database-architect`** | Schema design, zero-downtime migrations (expand/contract), index optimization, and RLS policies. | `db-migration-guard`, `database-design`, `architecture-decision-records` |
 | **`qa-automation-engineer`** | Self-healing Playwright E2E suites, semantic accessibility locators, and regression prevention. | `self-healing-qa`, `webapp-testing`, `testing-patterns` |
 | **`debugger`** | Root cause analysis, crash reproduction, stack trace parsing, and visual anomaly debugging. | `visual-security-debugger`, `clean-code` |
-| **`orchestrator`** | Master coordinator that breaks complex multi-domain tasks into parallel subagent workflows. | `context-budget`, `clean-code`, `plan-writing` |
+| **`orchestrator`** | Master coordinator that drives the 6-stage Full-Agent Thought Chain and triggers continuous learning. | `continuous-learning`, `context-budget`, `clean-code`, `plan-writing` |
 | **`devops-engineer`** | CI/CD pipelines, Docker containerization, edge workers, and deployment automation. | `cloudflare-one`, `gateway-workers`, `clean-code` |
 | **`code-archaeologist`** | Reverse-engineers legacy codebases, maps undocumented dependencies, and plans migrations. | `documentation-templates`, `clean-code` |
 | **`seo-specialist`** | Technical SEO, metadata, OpenGraph tags, structured JSON-LD data, and sitemap generation. | `nextjs-react-expert`, `frontend-design` |
@@ -234,12 +254,13 @@ All agents are configured in `.agents/agents/` with precise system prompts, tool
 
 ---
 
-## 🧰 Hardened Skills Catalog (30 Skills)
+## 🧰 Hardened Skills Catalog (31 Skills)
 
 Every skill in `.agents/skills/` contains a comprehensive `SKILL.md`, runtime scripts, reference examples, and passes NVIDIA SkillSpector rules:
 
 | Category | Skills | Description |
 |----------|--------|-------------|
+| **Living Memory & Learning** | `continuous-learning` | Auto-extracts proven patterns into `docs/memory/` and retrieves past learnings pre-task. |
 | **Design & UI Polish** | `make-interfaces-feel-better`, `frontend-design` | Concentric radii, optical alignment, layered shadows, tactile micro-press, 44px hit areas. |
 | **Performance & RSC** | `react-performance`, `core-web-vitals-guard`, `performance-profiling`, `nextjs-react-expert` | Eliminating network waterfalls, bundle direct imports, Suspense streaming, Core Web Vitals. |
 | **Architecture & Planning** | `architecture-decision-records`, `context-budget`, `documentation-templates`, `website-builder-setup` | Michael Nygard ADRs in `docs/adr/`, disk-first persistence, token budget optimization. |
@@ -255,6 +276,7 @@ Every skill in `.agents/skills/` contains a comprehensive `SKILL.md`, runtime sc
 
 Web-ag-kit includes specialized agent workflows in `.agents/workflows/` that can be executed directly:
 
+- **`/full-agent`**: Executes the 6-stage autonomous squad pipeline (Entender > Planejar > Executar > Revisar Seg > Revisar QA > Aprender).
 - **`/security-audit`**: Runs a full 360° security inspection across API routes, secrets, database migrations, edge WAF rules, and AI skills.
 - **`/ui-ux-pro-max`**: Design intelligence workflow featuring 50+ styles, 95+ palettes, and automated design system generation.
 - **`/plan`**: Deep discovery and 4-phase planning before writing complex full-stack code.
@@ -303,22 +325,25 @@ Web-ag-kit includes an MCP configuration template at `.agents/mcp/mcp_config.jso
 
 Try these prompts with your AI coding assistant:
 
-#### 1. UI Craftsmanship & Anti-Template Review
+#### 1. Full-Agent Autonomous Squad Pipeline
+> *"Execute /full-agent to build a team dashboard with activity metrics, Drizzle ORM, Turnstile anti-bot protection, and Playwright tests. Record any novel patterns in docs/memory/."*
+
+#### 2. UI Craftsmanship & Anti-Template Review
 > *"Use @frontend-specialist and make-interfaces-feel-better to review our components. Fix concentric border radii on nested cards, add optical offsets to icon buttons, and eliminate transition: all."*
 
-#### 2. Architectural Decision Records (ADR)
+#### 3. Architectural Decision Records (ADR)
 > *"We need to choose between Drizzle and Prisma for our edge runtime. Use @project-planner and architecture-decision-records to document the trade-offs in docs/adr/."*
 
-#### 3. Eliminating React 19 Network Waterfalls
+#### 4. Eliminating React 19 Network Waterfalls
 > *"Use @performance-optimizer and react-performance to audit our dashboard Server Components. Parallelize independent queries using Suspense and Promise.all."*
 
-#### 4. Stealth Web Crawling with Scrapling
+#### 5. Stealth Web Crawling with Scrapling
 > *"Use @explorer-agent and the scrapling skill to fetch https://news.ycombinator.com, extract top headlines using adaptive CSS selectors, and format into Markdown."*
 
-#### 5. Zero-Downtime Migration Validation
+#### 6. Zero-Downtime Migration Validation
 > *"Use @database-architect and db-migration-guard to inspect our latest Prisma/Drizzle migration. Ensure no tables are exclusively locked and columns use the expand/contract pattern."*
 
-#### 6. Full 360° Security Audit
+#### 7. Full 360° Security Audit
 > *"Execute /security-audit across our repository to audit API routes against OWASP API Top 10, check for exposed secrets, and verify Cloudflare Turnstile token validation."*
 
 ---

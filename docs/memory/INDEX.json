@@ -1,0 +1,41 @@
+[
+  {
+    "id": "SLN-001",
+    "title": "Scrapling Stealth Crawler & Cloudflare Anti-Bot Bypass",
+    "file": "solutions/SLN-001-scrapling-stealth-crawler-and-cloudflare-defense.md",
+    "date": "2026-11-07",
+    "tags": [
+      "scrapling",
+      "cloudflare",
+      "crawling",
+      "anti-bot"
+    ],
+    "author": "@explorer-agent"
+  },
+  {
+    "id": "SLN-002",
+    "title": "Concentric Radii Formula & Tactile Micro-Interactions",
+    "file": "solutions/SLN-002-concentric-radii-and-tactile-ui-polish.md",
+    "date": "2026-11-07",
+    "tags": [
+      "design-engineering",
+      "tailwind",
+      "ui-polish",
+      "concentric-radii"
+    ],
+    "author": "@frontend-specialist"
+  },
+  {
+    "id": "SLN-003",
+    "title": "Full-Agent Thought Chain Pipeline",
+    "file": "solutions/SLN-003-full-agent-thought-chain-pipeline.md",
+    "date": "2026-11-07",
+    "tags": [
+      "orchestration",
+      "full-agent",
+      "memory",
+      "continuous-learning"
+    ],
+    "author": "Full-Agent Squad"
+  }
+]
