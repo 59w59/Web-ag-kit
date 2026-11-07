@@ -12,7 +12,7 @@
   </a>
 </p>
 
-**Web-ag-kit** is a ready-to-use **AI Agent Workspace** designed specifically for full-stack web development (frontend & backend). It instantly equips your local coding agents (like Antigravity, Gemini, or Claude) with specialized roles, reusable software engineering skills, custom workflows, and automated quality checks.
+**Web-ag-kit** is a ready-to-use **AI Agent Workspace** designed specifically for full-stack web development (frontend & backend). It instantly equips your local coding agents (like Antigravity, Gemini, or Claude) with specialized roles, reusable software engineering skills, custom workflows, zero-downtime safety, and automated quality checks.
 
 Stop teaching your AI how you want to build websites in every session. Scaffold a structured workspace in one command and let your agents code with senior-level guidelines.
 
@@ -22,43 +22,57 @@ Stop teaching your AI how you want to build websites in every session. Scaffold 
 
 This kit is built to solve common pitfalls in AI-generated web development (like generic color schemes, unoptimized queries, missing test suites, or lack of accessibility compliance):
 
-- 💻 **Frontend Engineering**: Configured for React, Next.js, and standard CSS/Tailwind. Bundles full design guidelines, UX principles, typography combinations, and Framer Motion animation instructions.
-- ⚙️ **Backend Architectures**: Establishes strict rules for database migrations, relational schema indexing, REST/GraphQL design, token security (JWT/OAuth), and rate-limiting.
-- 🛡️ **Code Quality & Audits**: Contains built-in scripts to test accessibility (a11y), check SEO, run security vulnerability scans (OWASP compliance), and check Next.js bundle sizes before shipping.
+- 💻 **Frontend Engineering**: Configured for React 19, Next.js 15, and standard CSS/Tailwind. Bundles design guidelines, UX principles, typography systems, and Framer Motion animation instructions.
+- ⚡ **Core Web Vitals & Next.js Performance**: Employs `core-web-vitals-guard` to eliminate `'use client'` bundle bloat, optimize tree-shaking for icon barrel files, and enforce responsive image formats (LCP/CLS/INP).
+- 🗄️ **Zero-Downtime Database Engineering**: Employs `db-migration-guard` to audit Prisma, Drizzle, and PostgreSQL migrations against exclusive table locks, destructive drops, and missing Row-Level Security (RLS).
+- 🧪 **Self-Healing QA Automation**: Employs `self-healing-qa` to generate robust Playwright tests using semantic, accessible locators (`getByRole`, `getByLabel`) that withstand UI refactors.
+- 🛡️ **Cloudflare Edge Defense**: Integrates OWASP 2025 compliance with **Cloudflare Edge Defense** (WAF, Turnstile bot verification, Cloudflare One Zero Trust, and Rate Limiting).
+- 🔐 **Web API & Architecture Security**: Implements **OWASP API Security Top 10:2023** (`api-security`) to eliminate BOLA, BFLA, and Mass Assignment, paired with STRIDE web threat modeling (`web-threat-modeling`).
+- 🎯 **Defensive Attack Simulation**: Uses `web-defense-simulator` to send non-destructive probes verifying that CORS origin isolation and Turnstile bot shields actively block unauthorized requests.
+- 👁️ **Visual Security & OCR Debugging**: Employs `visual-security-debugger` to visually inspect pages, extract on-screen error dumps, detect defacement / Magecart intrusions, and audit clickjacking risks.
+- 🔍 **AI Agent & Skill Hardening (NVIDIA SkillSpector)**: Audits AI skills, prompts, and MCP servers with `skill-inspector` to detect prompt injection, invisible Unicode attacks, and exfiltration hooks.
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Interactive Setup Wizard)
 
-You can initialize the `.agents/` workspace in your project using either **NPX** or by installing it **globally**.
+You can initialize the `.agents/` workspace interactively or via automated flags:
 
-#### Option A: Run via NPX (No installation required)
-In your terminal, navigate to your project directory and run:
+#### Option A: Run via NPX (Interactive Wizard)
 ```bash
 npx @59w59/web-ag-kit
 ```
 
-#### Option B: Install globally and initialize
-Install the package globally:
+#### Option B: Install Globally
 ```bash
 npm install -g @59w59/web-ag-kit
+web-ag-kit ./my-new-project
 ```
-Now you can initialize it in any project folder by running:
+
+#### Option C: Non-Interactive / CI Mode
 ```bash
-web-ag-kit
+web-ag-kit ./my-new-project -y
 ```
-*(Or specify a folder: `web-ag-kit ./my-new-project`)*
+
+#### Option D: 🛡️ Security & Cybersecurity Edition Only
+Install ONLY the cybersecurity and edge defense suite (Cloudflare WAF, Turnstile, OWASP API, STRIDE, Pentest, SkillSpector):
+```bash
+npx @59w59/web-ag-kit security ./my-project
+# or with global CLI:
+web-ag-kit security ./my-project -y
+```
 
 ---
 
 ## 🤖 Meet the Specialist Agents
 
-Here are some of the specialized roles ready to work on your codebase:
-
-- **Frontend Specialist** (`frontend-specialist.md`): Focuses on generating beautiful, accessible, and responsive UI components with clean Tailwind classes and fluid animations.
-- **Backend Specialist** (`backend-specialist.md`): Focuses on secure, robust RESTful APIs, database optimizations, queries, and server-side middleware.
-- **QA & Test Engineer** (`qa-automation-engineer.md`): Focuses on writing unit, integration, and E2E tests (using Playwright or Jest) following strict AAA testing patterns.
-- **Penetration Tester / Security Auditor**: Scans code for dependency vulnerabilities, OWASP threats, and SQL injection flaws.
+- **Frontend Specialist** (`frontend-specialist.md`): Generates accessible, responsive UI components with clean Tailwind classes and fluid animations.
+- **Backend Specialist** (`backend-specialist.md`): Secure, robust RESTful APIs, database optimizations, mass-assignment prevention, and server-side middleware.
+- **Database Architect** (`database-architect.md`): Transactional schemas, zero-downtime migrations (expand/contract), index optimization, and RLS policies.
+- **Performance Optimizer** (`performance-optimizer.md`): Core Web Vitals optimization, server/client component boundaries, and bundle tree-shaking.
+- **QA Automation Engineer** (`qa-automation-engineer.md`): Self-healing Playwright E2E suites, semantic accessibility locators, and regression prevention.
+- **Debugger & Root Cause Analyst** (`debugger.md`): Investigates runtime crashes, visual anomalies, stack trace overlays, and production breaks.
+- **Penetration Tester & Security Auditor** (`security-auditor.md`, `penetration-tester.md`): Audits code against OWASP Web & API Top 10, validates Cloudflare WAF & Turnstile anti-bot integration, and executes defensive simulations.
 
 ---
 
@@ -66,22 +80,33 @@ Here are some of the specialized roles ready to work on your codebase:
 
 Once initialized, try prompts like:
 
-* **For UI design**:
-  > *"Use the @frontend-specialist persona to build a responsive, dashboard navbar. Rely on our Tailwind design guidelines, avoid generic templates, and use subtle Framer Motion hover animations."*
-  
-* **For Database & API**:
-  > *"Use the @backend-specialist to design a PostgreSQL migration schema and REST API endpoints for user authentication. Ensure proper indexing for frequently queried fields."*
+* **For Full 360° Security Audit**:
+  > *"Run /security-audit across our codebase to test API routes, secrets, database migrations, and edge defenses."*
 
-* **For Pre-deployment Verification**:
-  > *"Run the local checklist verification script to verify that my changes pass security linting, test cases, and SEO best practices."*
+* **For Zero-Downtime Migration Review**:
+  > *"Use the @database-architect and db-migration-guard to verify whether our latest Prisma migration locks any tables."*
+
+* **For Core Web Vitals Optimization**:
+  > *"Audit our Next.js app with core-web-vitals-guard and eliminate unnecessary 'use client' directives."*
+
+* **For Resilient E2E Tests**:
+  > *"Use self-healing-qa to generate Playwright tests for our user checkout flow using getByRole semantic locators."*
+
+* **For Web API Security**:
+  > *"Use the @security-auditor and api-security skill to audit our Next.js /api routes for BOLA and mass-assignment risks."*
+
+* **For Defensive Probing**:
+  > *"Run web-defense-simulator on http://localhost:3000 to verify that missing Turnstile tokens are rejected on login."*
 
 ---
 
 ## 🔌 Connecting Local MCP Servers
 
 The workspace comes with a template config at `.agents/mcp/mcp_config.json` defining helpful tools:
+* **cloudflare**: Query Cloudflare API, DNS, WAF rules, and documentation directly.
 * **21st-dev-magic**: Quick UI component insertion.
 * **postgres-inspector**: Query your database directly inside the agent chat.
+* **sqlite-inspector**: Inspect and query local SQLite databases.
 * **puppeteer-browser**: Renders and inspects UI layouts.
 
 To enable them, copy the configuration block and paste it into your local global configuration (`~/.gemini/config/mcp_config.json` or `%USERPROFILE%\.gemini\config\mcp_config.json` on Windows).
@@ -90,9 +115,7 @@ To enable them, copy the configuration block and paste it into your local global
 
 ## 🙈 Git Configuration (.gitignore)
 
-The `.agents/` folder contains your team's custom prompts, rules, and workflows. You **should commit** the `.agents/` folder to Git so that everyone working on the project shares the same AI agent workspace guidelines.
-
-However, you should **ignore local agent run logs** to keep your git commits clean. Add the following to your project's `.gitignore` file:
+Add the following to your project's `.gitignore` file:
 
 ```text
 # Ignore local agent execution logs
