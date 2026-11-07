@@ -1,7 +1,7 @@
 {
   "name": "@59w59/web-ag-kit",
-  "version": "1.3.0",
-  "description": "Scaffold a full-stack AI agent workspace with Cloudflare edge defense, OWASP API security, STRIDE threat modeling, Zero-Downtime migrations & self-healing QA.",
+  "version": "1.5.0",
+  "description": "Scaffold a full-stack AI agent workspace with Cloudflare defense, OWASP API, STRIDE, Scrapling stealth crawler, Zero-Downtime DB, Self-healing QA & ECC Design/Performance optimization.",
   "main": "bin/index.js",
   "bin": {
     "web-ag-kit": "bin/index.js",
@@ -19,6 +19,10 @@
     "web-development",
     "cli",
     "cloudflare",
+    "scrapling",
+    "web-scraping",
+    "crawler",
+    "stealth-browser",
     "security",
     "owasp-api",
     "threat-modeling",
@@ -27,7 +31,12 @@
     "self-healing-qa",
     "core-web-vitals",
     "turnstile",
-    "waf"
+    "waf",
+    "design-engineering",
+    "ui-polish",
+    "architecture-decision-records",
+    "context-budget",
+    "react-performance"
   ],
   "author": "59w59",
   "license": "MIT"

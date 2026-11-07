@@ -7,6 +7,18 @@ const readline = require('readline');
 const pkg = require('../package.json');
 const args = process.argv.slice(2);
 
+// Handle Scrapling setup command
+if (args.includes('setup-scrapling') || args.includes('install-scrapling')) {
+  const installerScript = path.join(__dirname, '../.agents/skills/scrapling/scripts/install_scrapling.js');
+  if (fs.existsSync(installerScript)) {
+    require(installerScript);
+  } else {
+    console.error('❌ Scrapling installer script not found at:', installerScript);
+    process.exit(1);
+  }
+  return;
+}
+
 // Handle help flag
 if (args.includes('--help') || args.includes('-h')) {
   console.log(`
@@ -16,11 +28,14 @@ ${pkg.description}
 \x1b[1mUSAGE:\x1b[0m
   web-ag-kit [target-directory] [options]
   web-ag-kit security [target-directory] [options]
+  web-ag-kit install-scrapling
   npx @59w59/web-ag-kit [target-directory] [options]
   npx @59w59/web-ag-kit security [target-directory] [options]
+  npx @59w59/web-ag-kit install-scrapling
 
 \x1b[1mCOMMANDS:\x1b[0m
   security             Install ONLY security, OWASP API, Cloudflare & Pentest assets
+  install-scrapling    Install Scrapling framework & stealth browser binaries (Python 3.10+)
 
 \x1b[1mARGUMENTS:\x1b[0m
   target-directory     Target directory to scaffold (default: current directory)
@@ -36,6 +51,7 @@ ${pkg.description}
   web-ag-kit
   web-ag-kit security ./my-api
   web-ag-kit --security ./my-project -y
+  web-ag-kit install-scrapling
   npx @59w59/web-ag-kit security
 `);
   process.exit(0);
@@ -72,7 +88,8 @@ const SECURITY_SKILLS = [
   'turnstile-spin',
   'gateway-workers',
   'red-team-tactics',
-  'db-migration-guard'
+  'db-migration-guard',
+  'scrapling'
 ];
 
 const SECURITY_WORKFLOWS = [
@@ -132,8 +149,8 @@ async function runWizard() {
 
     if (!isSecurityOnlyCommand) {
       console.log('\n\x1b[1m📦 Select package installation mode:\x1b[0m');
-      console.log('  1) Complete Full-Stack Workspace (All 18 Agents & 22+ Skills) [Default]');
-      console.log('  2) Cybersecurity & Edge Defense ONLY (Cloudflare, OWASP API, Pentest, Threat Modeling)');
+      console.log('  1) Complete Full-Stack Workspace (All 18 Agents & 30+ Skills including ECC & Scrapling) [Default]');
+      console.log('  2) Cybersecurity & Edge Defense ONLY (Cloudflare, OWASP API, Scrapling, Pentest, Threat Modeling)');
       const modeChoice = await ask(rl, 'Choose mode [1-2]', '1');
       if (modeChoice === '2') {
         isSecurityOnly = true;
@@ -146,7 +163,7 @@ async function runWizard() {
       console.log('  1) Next.js 15 (App Router, Server Actions, Tailwind, Prisma/Drizzle)');
       console.log('  2) React SPA (Vite, Tailwind, TanStack Query)');
       console.log('  3) Full-Stack Node / Express / Fastify / Supabase API');
-      console.log('  4) Universal Full-Stack (All 22+ Skills & 18 Agents)');
+      console.log('  4) Universal Full-Stack (All Skills, Agents & Scrapling Crawler)');
       const stackChoice = await ask(rl, 'Choose stack [1-4]', '1');
       const stackMap = {
         '1': 'Next.js 15 Full-Stack',
@@ -206,7 +223,8 @@ async function runWizard() {
       console.log('\x1b[1mNext steps:\x1b[0m');
       console.log('  1. Open this project in VS Code / Antigravity / Cursor.');
       console.log('  2. Run: \x1b[33m"Run /security-audit across our application"\x1b[0m to execute full 360° audit.');
-      console.log('  3. Proactively audit API endpoints with \x1b[35mapi-security\x1b[0m and \x1b[35mweb-defense-simulator\x1b[0m!\n');
+      console.log('  3. Proactively audit API endpoints with \x1b[35mapi-security\x1b[0m and \x1b[35mweb-defense-simulator\x1b[0m!');
+      console.log('  4. To setup stealth crawling with Scrapling, run: \x1b[33mweb-ag-kit install-scrapling\x1b[0m\n');
     } else {
       // Full copy
       fs.cpSync(sourceAgents, targetAgents, { recursive: true });
@@ -215,13 +233,13 @@ async function runWizard() {
       console.log(`\n  📂 Target: \x1b[34m${targetAgents}\x1b[0m`);
       console.log(`  💻 Stack Profile: \x1b[35m${stack}\x1b[0m`);
       console.log(`  🤖 Agents Installed: \x1b[36m18 Specialist Personas\x1b[0m`);
-      console.log(`  ⚡ Skills Included: \x1b[36m22 Hardened Skills (Fullstack + Security + CWV)\x1b[0m`);
+      console.log(`  ⚡ Skills Included: \x1b[36m23 Hardened Skills (Fullstack + Security + CWV + Scrapling)\x1b[0m`);
       console.log(`  🔄 Workflows: \x1b[36morchestrate, security-audit, ui-ux-pro-max, deploy\x1b[0m\n`);
 
       console.log('\x1b[1mNext steps:\x1b[0m');
       console.log('  1. Open this directory in VS Code / Antigravity / Cursor.');
       console.log('  2. Try prompt: \x1b[33m"Run /security-audit to test our web application security."\x1b[0m');
-      console.log('  3. Enjoy high-velocity, senior-level agentic development!\n');
+      console.log('  3. To setup Scrapling for web crawling & anti-bot testing, run: \x1b[33mweb-ag-kit install-scrapling\x1b[0m\n');
     }
   } catch (err) {
     console.error('\x1b[31m%s\x1b[0m', '❌ Initialization failed:', err.message);

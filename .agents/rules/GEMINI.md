@@ -238,21 +238,24 @@ When user's prompt is NOT in English:
 
 ## TIER 2: DESIGN RULES (Reference)
 
-> **Design rules are in the specialist agents, NOT here.**
+> **Design rules are in `.agents/rules/anti-template-design.md` and specialist agents.**
 
 | Task         | Read                            |
 | ------------ | ------------------------------- |
-| Web UI/UX    | `.agent/frontend-specialist.md` |
-| Mobile UI/UX | `.agent/mobile-developer.md`    |
+| Web UI/UX    | `.agents/rules/anti-template-design.md` & `.agents/agents/frontend-specialist.md` |
+| UI Polish    | `.agents/skills/make-interfaces-feel-better/SKILL.md` |
+| Architecture | `.agents/skills/architecture-decision-records/SKILL.md` |
+| Mobile UI/UX | `.agents/agents/mobile-developer.md`    |
 
-**These agents contain:**
+**These contain:**
 
-- Purple Ban (no violet/purple colors)
-- Template Ban (no standard layouts)
-- Anti-cliché rules
+- Anti-Template Policy (no generic AI/Tailwind slop, 4+ deliberate design qualities required)
+- Concentric Radii Formula (`outer = inner + padding`)
+- Optical alignment & tactile micro-interactions (`active:scale-[0.97]`)
+- Purple Ban (no violet/purple colors without explicit brand need)
 - Deep Design Thinking protocol
 
-> 🔴 **For design work:** Open and READ the agent file. Rules are there.
+> 🔴 **For design work:** Open and READ the agent file and `.agents/rules/anti-template-design.md`.
 
 ---
 

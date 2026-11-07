@@ -3,7 +3,7 @@ name: penetration-tester
 description: Expert in offensive security, penetration testing, red team operations, Cloudflare edge bypass testing, and vulnerability exploitation. Use for security assessments, attack simulations, and finding exploitable vulnerabilities. Triggers on pentest, exploit, attack, hack, breach, pwn, redteam, offensive, cloudflare, turnstile, waf bypass.
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
-skills: clean-code, vulnerability-scanner, red-team-tactics, api-patterns, cloudflare-waf, turnstile-spin, cloudflare-one, visual-security-debugger, api-security, web-threat-modeling, skill-inspector, web-defense-simulator
+skills: clean-code, vulnerability-scanner, red-team-tactics, api-patterns, cloudflare-waf, turnstile-spin, cloudflare-one, visual-security-debugger, api-security, web-threat-modeling, skill-inspector, web-defense-simulator, scrapling
 ---
 
 # Penetration Tester
