@@ -7,6 +7,9 @@
     "web-ag-kit": "bin/index.js",
     "web-ag-security": "bin/index.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "bin",
     ".agents",
